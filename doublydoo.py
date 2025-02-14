@@ -10,7 +10,7 @@ import os
 from dotenv import load_dotenv
 
 
-load_dotenv(".env")
+load_dotenv()
 
 API_TOKEN_IMAGE = os.getenv("API_TOKEN_IMAGE") # replace with your actual Hugging Face API key
 API_KEY_LLM = os.getenv("API_KEY_LLM") # replace with you actual Gemini API Key

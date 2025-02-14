@@ -232,7 +232,7 @@ def main_function():
     
         st.info(f"#### Moral Of The Story\n{moral}")
     else:
-        st.info("#####Kindly select both a genre and a gender before proceeding")
+        st.info("**Kindly select both a genre and a gender before proceeding**")
 
 
 if __name__ == "__main__":

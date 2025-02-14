@@ -133,7 +133,7 @@ def display_image(file_name):
     try:
         st.image(file_name)  
     except:
-        st.error("unable to load image")
+        st.error("Unable to display the image due to server restrictions")
 
 
 
@@ -232,7 +232,7 @@ def main_function():
     
         st.info(f"#### Moral Of The Story\n{moral}")
     else:
-        st.warning("⚠️ Please select both a genre and a gender before proceeding.")
+        st.info("Kindly select both a genre and a gender before proceeding")
 
 
 if __name__ == "__main__":

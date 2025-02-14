@@ -199,38 +199,40 @@ def main_function():
 
     age = str(st.slider("How old are you?", 5, 10))
     gender = st.radio("Gender", ["Boy", "Girl"], index=None, horizontal=True)
-
-    title, story, moral = output_for(option, age, gender)
-
-    st.subheader(title)
-
-    chunks_of_story = story.split("\n\n")
-    file_path="images"
-    for i, paragraph in enumerate(chunks_of_story):
-        prompt = prompter(paragraph)
-        file_name = f"{file_path}/image_{i+1}.png"
-        
-
-        generate_image(prompt, file_name)
-
-
-        display_image(file_name)
-   
-
-        st.write(paragraph)
-
-        path = asyncio.run(main(paragraph))
-        st.audio(path, format="audio/mp3")
-        
-        if os.path.exists(path):
-            os.remove(path)
-        # print(path)
-        if os.path.exists(file_name):
-            os.remove(file_name)
+    if option and gender:
+        title, story, moral = output_for(option, age, gender)
+    
+        st.subheader(title)
+    
+        chunks_of_story = story.split("\n\n")
+        file_path="images"
+        for i, paragraph in enumerate(chunks_of_story):
+            prompt = prompter(paragraph)
+            file_name = f"{file_path}/image_{i+1}.png"
             
-        # print(f"Temporary file {path} deleted.")
-
-    st.info(f"#### Moral Of The Story\n{moral}")
+    
+            generate_image(prompt, file_name)
+    
+    
+            display_image(file_name)
+       
+    
+            st.write(paragraph)
+    
+            path = asyncio.run(main(paragraph))
+            st.audio(path, format="audio/mp3")
+            
+            if os.path.exists(path):
+                os.remove(path)
+            # print(path)
+            if os.path.exists(file_name):
+                os.remove(file_name)
+                
+            # print(f"Temporary file {path} deleted.")
+    
+        st.info(f"#### Moral Of The Story\n{moral}")
+    else:
+        st.warning("⚠️ Please select both a genre and a gender before proceeding.")
 
 
 if __name__ == "__main__":

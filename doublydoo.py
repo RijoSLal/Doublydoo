@@ -24,13 +24,13 @@ MODEL = "gemini-1.5-flash"
 
 llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0.1, api_key=API_KEY_LLM)
 
-
+#optional
 default_genre = "Fantasy"
 default_age = "7"
 default_gender = "Boy"
 
 
-def output_for(genre=default_genre, age=default_age, gender=default_gender):
+def output_for(genre, age, gender):
     template_one = PromptTemplate(
         input_variables=["genre", "age", "gender"],
         template="Write a short story in the {genre} genre for {gender} kids aged {age}.\

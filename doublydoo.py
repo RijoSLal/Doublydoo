@@ -24,10 +24,10 @@ MODEL = "gemini-1.5-flash"
 
 llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0.1, api_key=API_KEY_LLM)
 
-#optional
-default_genre = "Fantasy"
-default_age = "7"
-default_gender = "Boy"
+
+# default_genre = "Fantasy"
+# default_age = "7"
+# default_gender = "Boy"
 
 
 def output_for(genre, age, gender):
@@ -221,9 +221,13 @@ def main_function():
 
         path = asyncio.run(main(paragraph))
         st.audio(path, format="audio/mp3")
+        
+        if os.path.exists(path):
+            os.remove(path)
         # print(path)
-        os.remove(path)
-        os.remove(file_name)
+        if os.path.exists(file_name):
+            os.remove(file_name)
+            
         # print(f"Temporary file {path} deleted.")
 
     st.info(f"#### Moral Of The Story\n{moral}")

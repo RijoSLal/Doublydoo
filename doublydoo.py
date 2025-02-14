@@ -22,7 +22,7 @@ HEADERS = {"Authorization": f"Bearer {API_TOKEN_IMAGE}"}
 MODEL = "gemini-1.5-flash"
 
 
-llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0.1, api_key=API_KEY_LLM)
+llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0, api_key=API_KEY_LLM)
 
 
 # default_genre = "Fantasy"
@@ -93,7 +93,7 @@ def prompter(story_chunk):
         input_variables=["story_chunk"],
         template="Convert the following story {story_chuck} into a highly detailed cartoon-style image generating prompt.\
                         Describe the scene vividly, including character actions, emotions, setting, and key objects. \
-                        Keep it under 30 words while ensuring accuracy",
+                        Keep it under 40 words while ensuring accuracy",
     )
 
     llm_chain = LLMChain(llm=llm, prompt=template_prompt)
@@ -232,7 +232,7 @@ def main_function():
     
         st.info(f"#### Moral Of The Story\n{moral}")
     else:
-        st.info("Kindly select both a genre and a gender before proceeding")
+        st.info("#####Kindly select both a genre and a gender before proceeding")
 
 
 if __name__ == "__main__":
